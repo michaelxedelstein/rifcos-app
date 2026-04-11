@@ -1,4 +1,4 @@
-export const APP_NAME = 'RIFCO';
+export const APP_NAME = 'RIFCOS';
 export const LAUNCH_CATEGORY = 'oyster-shucker';
 export const LAUNCH_CATEGORY_DISPLAY = 'Oyster Shucker';
 

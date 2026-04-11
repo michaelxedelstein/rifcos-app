@@ -14,7 +14,7 @@ export function SignupScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Create account</Text>
-      <Text style={styles.subtitle}>Choose how you want to use RIFCO</Text>
+      <Text style={styles.subtitle}>Choose how you want to use RIFCOS</Text>
 
       <View style={styles.roleSelector}>
         <TouchableOpacity

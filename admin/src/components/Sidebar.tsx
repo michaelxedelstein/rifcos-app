@@ -21,7 +21,7 @@ export function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 h-full w-56 bg-sidebar flex flex-col">
       <div className="px-5 py-6 border-b border-white/10">
-        <h1 className="text-lg font-bold text-white tracking-widest">RIFCO</h1>
+        <h1 className="text-lg font-bold text-white tracking-widest">RIFCOS</h1>
         <p className="text-xs text-muted mt-0.5">Operations</p>
       </div>
 
@@ -50,7 +50,7 @@ export function Sidebar() {
       </nav>
 
       <div className="px-5 py-4 border-t border-white/10">
-        <p className="text-xs text-muted">RIFCO Admin v0.1</p>
+        <p className="text-xs text-muted">RIFCOS Admin v0.1</p>
       </div>
     </aside>
   );

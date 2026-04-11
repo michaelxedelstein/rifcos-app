@@ -30,7 +30,7 @@ export default function LoginPage() {
     <div className="fixed inset-0 flex items-center justify-center bg-[#0a0a0a]">
       <div className="w-full max-w-sm px-6">
         <h1 className="text-2xl font-bold text-white tracking-widest text-center mb-2">
-          RIFCO
+          RIFCOS
         </h1>
         <p className="text-sm text-[#6e6e80] text-center mb-8">
           Operations Dashboard

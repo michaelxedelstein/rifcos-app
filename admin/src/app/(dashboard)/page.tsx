@@ -7,7 +7,7 @@ export default function OverviewPage() {
     <>
       <PageHeader
         title="Overview"
-        description="Real-time snapshot of RIFCO operations"
+        description="Real-time snapshot of RIFCOS operations"
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

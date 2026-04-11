@@ -1,4 +1,4 @@
-# RIFCO MVP — Locked Product Scope
+# RIFCOS MVP — Locked Product Scope
 
 ## Launch Category
 
@@ -119,5 +119,5 @@ This scope is frozen for the MVP build. New features are not added mid-phase unl
 
 ## Source Documents
 
-- `resources/RIFCO_MVP_Product_and_Technical_Blueprint_Packet.md`
-- `resources/RIFCO_MVP_Execution_Roadmap_and_Development_Packet.pdf`
+- `resources/RIFCOS_MVP_Product_and_Technical_Blueprint_Packet.md`
+- `resources/RIFCOS_MVP_Execution_Roadmap_and_Development_Packet.pdf`

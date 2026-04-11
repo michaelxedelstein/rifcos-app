@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RIFCO Operations",
-  description: "Internal operations dashboard for RIFCO",
+  title: "RIFCOS Operations",
+  description: "Internal operations dashboard for RIFCOS",
 };
 
 export default function RootLayout({
