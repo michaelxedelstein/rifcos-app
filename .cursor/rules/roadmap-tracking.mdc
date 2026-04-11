@@ -1,0 +1,20 @@
+---
+description: Ensures agents track RIFCO MVP progress against the roadmap and update the phase progress file
+alwaysApply: true
+---
+
+# RIFCO Roadmap and Phase Tracking
+
+Before starting any work, always do the following:
+
+1. **Read the progress tracker** at `resources/PHASE_PROGRESS.md` to determine which phase we are currently on. The current phase is the first phase with an unchecked Phase Gate.
+
+2. **Reference the roadmap** at `resources/RIFCO_MVP_Execution_Roadmap_and_Development_Packet.md` to understand the tasks, deliverables, and phase gate criteria for the current phase.
+
+3. **Stay on track.** Only work on tasks within the current phase unless explicitly told otherwise. Do not skip ahead or build features from future phases.
+
+4. **Update progress** in `resources/PHASE_PROGRESS.md` after completing tasks or phase gates. Check off items with `[x]` as they are finished.
+
+5. **Respect phase gates.** Before moving to the next phase, verify all phase gate criteria are met and marked complete in the tracker.
+
+Do not begin implementation without first confirming which phase is active and what remains to be done in that phase.
