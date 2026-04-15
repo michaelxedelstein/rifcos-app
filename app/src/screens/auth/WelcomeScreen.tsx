@@ -14,7 +14,7 @@ export function WelcomeScreen({ navigation }: Props) {
       <View style={styles.hero}>
         <Text style={styles.brand}>{APP_NAME}</Text>
         <Text style={styles.tagline}>
-          Request a {LAUNCH_CATEGORY_DISPLAY} for your next event
+          Request an {LAUNCH_CATEGORY_DISPLAY} for your next event
         </Text>
       </View>
 
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     ...Typography.h1,
     color: Colors.textLight,
     fontSize: 48,
+    lineHeight: 58,
     letterSpacing: 4,
   },
   tagline: {

@@ -17,6 +17,8 @@ export const Colors = {
   warning: '#FF9500',
   error: '#FF3B30',
   info: '#007AFF',
+  warningStrong: '#FF6B00',
+  gold: '#D4A017',
   overlay: 'rgba(0, 0, 0, 0.5)',
 } as const;
 

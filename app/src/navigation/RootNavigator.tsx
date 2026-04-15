@@ -1,36 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthStack } from './AuthStack';
 import { CustomerTabs } from './CustomerTabs';
 import { ProviderTabs } from './ProviderTabs';
-import { type UserRole, USER_ROLES } from '../constants/config';
+import { useAuth } from '../hooks/useAuth';
+import { LoadingScreen } from '../components/ui';
+import { USER_ROLES } from '../constants/config';
 
-/**
- * Temporary auth state for the app shell.
- * Will be replaced with Firebase Auth + Firestore user role lookup in Phase 3.
- */
 export function RootNavigator() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userRole, setUserRole] = useState<UserRole>(USER_ROLES.CUSTOMER);
+  const { user, profile, loading } = useAuth();
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
-
-  if (!isAuthenticated) {
-    return (
-      <NavigationContainer>
-        <AuthStack />
-      </NavigationContainer>
-    );
+  if (loading) {
+    return <LoadingScreen message="Loading..." />;
   }
 
   return (
     <NavigationContainer>
-      {userRole === USER_ROLES.CUSTOMER ? (
-        <CustomerTabs onLogout={handleLogout} />
+      {!user ? (
+        <AuthStack />
+      ) : profile?.role === USER_ROLES.PROVIDER ? (
+        <ProviderTabs />
       ) : (
-        <ProviderTabs onLogout={handleLogout} />
+        <CustomerTabs />
       )}
     </NavigationContainer>
   );

@@ -13,11 +13,7 @@ export type ProviderTabParamList = {
 
 const Tab = createBottomTabNavigator<ProviderTabParamList>();
 
-type Props = {
-  onLogout: () => void;
-};
-
-export function ProviderTabs({ onLogout }: Props) {
+export function ProviderTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -42,10 +38,9 @@ export function ProviderTabs({ onLogout }: Props) {
       />
       <Tab.Screen
         name="Profile"
+        component={ProfileScreen}
         options={{ tabBarLabel: 'Profile' }}
-      >
-        {() => <ProfileScreen onLogout={onLogout} />}
-      </Tab.Screen>
+      />
     </Tab.Navigator>
   );
 }
