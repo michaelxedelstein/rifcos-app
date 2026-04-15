@@ -102,7 +102,7 @@ in_progress → cancelled_by_provider (emergency only)
 
 ## Events Logged at Each Transition
 
-Every state change writes a structured event to the `events` collection. See `docs/event-taxonomy.md` for full payload definitions.
+Every state change writes a structured event to the `events` collection. See `docs/phase-1/event-taxonomy.md` for full payload definitions.
 
 | Transition | Event name |
 |---|---|

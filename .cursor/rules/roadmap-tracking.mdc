@@ -11,7 +11,7 @@ Before starting any work, always do the following:
 
 2. **Reference the roadmap** at `resources/RIFCOS_MVP_Execution_Roadmap_and_Development_Packet.md` to understand the tasks, deliverables, and phase gate criteria for the current phase.
 
-3. **Reference the product scope** at `docs/product-scope.md` to confirm what is in scope and out of scope for the MVP. Do not build anything listed as out of scope. Respect the scope freeze rule.
+3. **Reference the product scope** at `docs/phase-1/product-scope.md` to confirm what is in scope and out of scope for the MVP. Do not build anything listed as out of scope. Respect the scope freeze rule.
 
 4. **Stay on track.** Only work on tasks within the current phase unless explicitly told otherwise. Do not skip ahead or build features from future phases.
 

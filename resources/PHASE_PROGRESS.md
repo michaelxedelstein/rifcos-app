@@ -29,8 +29,8 @@
 ## Phase 2: Product Flow and Screen Mapping
 **Objective:** Design the product flow from start to finish so development follows one clear path instead of random feature building.
 
-- [ ] Write the complete customer journey from app open through request completion
-- [ ] Write the complete provider journey from signup through job completion
+- [x] Write the complete customer journey from app open through request completion
+- [x] Write the complete provider journey from signup through job completion
 - [ ] List every screen needed for MVP in the customer app
 - [ ] List every screen needed for MVP in the provider app
 - [ ] Define onboarding questions, profile fields, and permissions flow
