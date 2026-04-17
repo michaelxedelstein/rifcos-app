@@ -68,6 +68,10 @@ export function SignupScreen({ navigation }: Props) {
           keyboardShouldPersistTaps="handled"
         >
           <View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={styles.back}>← Back</Text>
+            </TouchableOpacity>
+
             <Text style={styles.title}>Create account</Text>
             <Text style={styles.subtitle}>Choose how you want to use RIFCOS</Text>
 
@@ -109,14 +113,15 @@ export function SignupScreen({ navigation }: Props) {
 
             <View style={styles.form}>
               <Input
-                label="Full name"
-                placeholder="Your full name"
+                label="FULL NAME"
+                placeholder="e.g. Marcus Tidal"
                 value={fullName}
                 onChangeText={setFullName}
                 autoComplete="name"
+                hint="This will appear on your booking profile"
               />
               <Input
-                label="Email"
+                label="EMAIL ADDRESS"
                 placeholder="you@example.com"
                 value={email}
                 onChangeText={setEmail}
@@ -125,8 +130,8 @@ export function SignupScreen({ navigation }: Props) {
                 autoComplete="email"
               />
               <Input
-                label="Password"
-                placeholder="At least 8 characters"
+                label="PASSWORD"
+                placeholder="Min 8 characters"
                 value={password}
                 onChangeText={setPassword}
                 isPassword
@@ -151,9 +156,14 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: Spacing.lg,
-    paddingTop: 40,
+    paddingTop: Spacing.md,
     justifyContent: 'space-between',
     paddingBottom: 40,
+  },
+  back: {
+    ...Typography.caption,
+    color: Colors.textSecondary,
+    marginBottom: Spacing.lg,
   },
   title: {
     ...Typography.h1,
@@ -176,18 +186,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.surface,
     borderWidth: 2,
-    borderColor: 'transparent',
+    borderColor: Colors.border,
   },
   roleOptionActive: {
-    borderColor: Colors.accent,
-    backgroundColor: '#FFF0F2',
+    borderColor: Colors.primary,
+    backgroundColor: Colors.primaryMuted,
   },
   roleLabel: {
     ...Typography.bodyBold,
     color: Colors.textSecondary,
   },
   roleLabelActive: {
-    color: Colors.accent,
+    color: Colors.primary,
   },
   form: {
     marginTop: Spacing.lg,

@@ -61,12 +61,16 @@ export function LoginScreen({ navigation }: Props) {
           keyboardShouldPersistTaps="handled"
         >
           <View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={styles.back}>← Back</Text>
+            </TouchableOpacity>
+
             <Text style={styles.title}>Welcome back</Text>
             <Text style={styles.subtitle}>Sign in to your account</Text>
 
             <View style={styles.form}>
               <Input
-                label="Email"
+                label="EMAIL ADDRESS"
                 placeholder="you@example.com"
                 value={email}
                 onChangeText={setEmail}
@@ -75,7 +79,7 @@ export function LoginScreen({ navigation }: Props) {
                 autoComplete="email"
               />
               <Input
-                label="Password"
+                label="PASSWORD"
                 placeholder="Your password"
                 value={password}
                 onChangeText={setPassword}
@@ -106,9 +110,14 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: Spacing.lg,
-    paddingTop: 40,
+    paddingTop: Spacing.md,
     justifyContent: 'space-between',
     paddingBottom: 40,
+  },
+  back: {
+    ...Typography.caption,
+    color: Colors.textSecondary,
+    marginBottom: Spacing.lg,
   },
   title: {
     ...Typography.h1,
@@ -125,7 +134,7 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     ...Typography.caption,
-    color: Colors.accent,
+    color: Colors.primary,
     textAlign: 'right',
     fontWeight: '600',
   },

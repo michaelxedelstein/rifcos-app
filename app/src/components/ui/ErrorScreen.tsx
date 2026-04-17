@@ -5,20 +5,33 @@ import { Button } from './Button';
 
 interface ErrorScreenProps {
   message?: string;
+  description?: string;
   onRetry?: () => void;
 }
 
 export function ErrorScreen({
   message = 'Something went wrong',
+  description = "We couldn't connect to the RIFCOS network. Check your connection and try again.",
   onRetry,
 }: ErrorScreenProps) {
   return (
     <View style={styles.container}>
-      <Text style={styles.icon}>!</Text>
-      <Text style={styles.text}>{message}</Text>
-      {onRetry && (
-        <Button title="Try Again" onPress={onRetry} variant="secondary" size="md" />
-      )}
+      <View style={styles.card}>
+        <View style={styles.iconWrap}>
+          <Text style={styles.icon}>⚠</Text>
+        </View>
+        <Text style={styles.message}>{message}</Text>
+        <Text style={styles.description}>{description}</Text>
+        {onRetry && (
+          <Button
+            title="↻  Try Again"
+            onPress={onRetry}
+            variant="secondary"
+            size="md"
+            style={{ marginTop: Spacing.md, borderColor: Colors.primary }}
+          />
+        )}
+      </View>
     </View>
   );
 }
@@ -30,16 +43,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: Spacing.lg,
-    gap: Spacing.md,
+  },
+  card: {
+    backgroundColor: Colors.surface,
+    borderRadius: 20,
+    padding: Spacing.xl,
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: 320,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  iconWrap: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: Colors.errorBg,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: Spacing.md,
   },
   icon: {
-    fontSize: 40,
-    fontWeight: '700',
+    fontSize: 24,
     color: Colors.error,
   },
-  text: {
-    ...Typography.body,
-    color: Colors.textSecondary,
+  message: {
+    ...Typography.bodyBold,
+    color: Colors.text,
     textAlign: 'center',
+  },
+  description: {
+    ...Typography.caption,
+    color: Colors.textMuted,
+    textAlign: 'center',
+    marginTop: Spacing.sm,
   },
 });

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Typography, Spacing, BorderRadius } from '../../constants/theme';
 import { useAuth } from '../../hooks/useAuth';
-import { Avatar, Divider, Button } from '../../components/ui';
+import { Avatar, Badge, Divider, Button } from '../../components/ui';
 
 export function ProfileScreen() {
   const { profile, signOut } = useAuth();
@@ -26,56 +27,53 @@ export function ProfileScreen() {
     ]);
   };
 
+  const isProvider = profile?.role === 'provider';
+
+  const menuItems = isProvider
+    ? ['Edit Profile', 'Earnings History', 'Availability Settings', 'Support']
+    : ['Edit Profile', 'Notifications', 'Payment Methods', 'Support'];
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <Avatar
           photoUrl={profile?.photoUrl}
           name={profile?.fullName}
-          size={72}
+          size={80}
+          showOnlineIndicator={isProvider}
+          online={profile?.availabilityStatus === 'online'}
         />
-        <View style={styles.headerInfo}>
-          <Text style={styles.name}>{profile?.fullName || 'User'}</Text>
-          <Text style={styles.email}>{profile?.email}</Text>
-          <Text style={styles.role}>
-            {profile?.role === 'provider' ? 'Oyster Shucker' : 'Customer'}
-          </Text>
+        <Text style={styles.name}>{profile?.fullName || 'User'}</Text>
+        <Text style={styles.email}>{profile?.email}</Text>
+        <View style={styles.badgeRow}>
+          <Badge
+            label={isProvider ? 'Oyster Shucker' : 'Customer'}
+            color="gold"
+            variant="pill"
+          />
         </View>
       </View>
 
       <Divider />
 
-      <View style={styles.section}>
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuText}>Edit Profile</Text>
-          <Text style={styles.chevron}>›</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuText}>Notifications</Text>
-          <Text style={styles.chevron}>›</Text>
-        </TouchableOpacity>
-        {profile?.role === 'customer' && (
-          <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuText}>Payment Methods</Text>
+      <View style={styles.menu}>
+        {menuItems.map((item) => (
+          <TouchableOpacity key={item} style={styles.menuItem} activeOpacity={0.6}>
+            <Text style={styles.menuText}>{item}</Text>
             <Text style={styles.chevron}>›</Text>
           </TouchableOpacity>
-        )}
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuText}>Support</Text>
-          <Text style={styles.chevron}>›</Text>
-        </TouchableOpacity>
+        ))}
       </View>
 
       <View style={styles.signOutSection}>
         <Button
           title="Sign Out"
-          variant="ghost"
+          variant="danger"
           onPress={handleSignOut}
           loading={signingOut}
-          style={{ opacity: 1 }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -84,32 +82,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     padding: Spacing.lg,
-    paddingTop: 80,
   },
   header: {
-    flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.md,
-  },
-  headerInfo: {
-    flex: 1,
+    paddingTop: Spacing.lg,
   },
   name: {
     ...Typography.h3,
     color: Colors.text,
+    marginTop: Spacing.md,
   },
   email: {
     ...Typography.caption,
     color: Colors.textSecondary,
     marginTop: 2,
   },
-  role: {
-    ...Typography.small,
-    color: Colors.accent,
-    fontWeight: '600',
-    marginTop: 4,
+  badgeRow: {
+    marginTop: Spacing.sm,
   },
-  section: {
+  menu: {
     gap: Spacing.xs,
   },
   menuItem: {
@@ -120,6 +111,8 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.md,
     paddingHorizontal: Spacing.md,
     borderRadius: BorderRadius.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   menuText: {
     ...Typography.body,

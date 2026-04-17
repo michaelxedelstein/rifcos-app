@@ -11,7 +11,7 @@ import { Colors, Typography, Spacing, BorderRadius } from '../../constants/theme
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   disabled?: boolean;
@@ -44,7 +44,7 @@ export function Button({
     >
       {loading ? (
         <ActivityIndicator
-          color={variant === 'primary' ? Colors.textLight : Colors.accent}
+          color={variant === 'primary' ? Colors.textDark : Colors.primary}
         />
       ) : (
         <Text style={[styles.text, styles[`text_${variant}`]]}>{title}</Text>
@@ -57,44 +57,51 @@ const styles = StyleSheet.create({
   base: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: BorderRadius.md,
+    borderRadius: BorderRadius.lg,
   },
   primary: {
-    backgroundColor: Colors.accent,
+    backgroundColor: Colors.primary,
   },
   secondary: {
     backgroundColor: 'transparent',
     borderWidth: 1.5,
-    borderColor: Colors.border,
+    borderColor: Colors.borderLight,
   },
   ghost: {
     backgroundColor: 'transparent',
   },
+  danger: {
+    backgroundColor: Colors.errorBg,
+  },
   size_sm: {
-    paddingVertical: Spacing.xs,
+    paddingVertical: Spacing.xs + 2,
     paddingHorizontal: Spacing.md,
   },
   size_md: {
-    paddingVertical: Spacing.sm,
+    paddingVertical: Spacing.sm + 2,
     paddingHorizontal: Spacing.lg,
   },
   size_lg: {
     paddingVertical: Spacing.md,
     paddingHorizontal: Spacing.lg,
+    minHeight: 52,
   },
   disabled: {
-    opacity: 0.5,
+    opacity: 0.4,
   },
   text: {
     ...Typography.bodyBold,
   },
   text_primary: {
-    color: Colors.textLight,
+    color: Colors.textDark,
   },
   text_secondary: {
     color: Colors.text,
   },
   text_ghost: {
-    color: Colors.accent,
+    color: Colors.primary,
+  },
+  text_danger: {
+    color: Colors.error,
   },
 });

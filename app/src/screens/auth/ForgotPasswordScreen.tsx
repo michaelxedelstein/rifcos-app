@@ -3,16 +3,22 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { type NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Colors, Typography, Spacing } from '../../constants/theme';
 import { Button, Input } from '../../components/ui';
 import { resetPassword } from '../../services/auth';
 
-export function ForgotPasswordScreen() {
+type Props = {
+  navigation: NativeStackNavigationProp<any>;
+};
+
+export function ForgotPasswordScreen({ navigation }: Props) {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -53,6 +59,12 @@ export function ForgotPasswordScreen() {
           We sent a password reset link to {email}. Check your inbox and follow
           the link to reset your password.
         </Text>
+        <Button
+          title="Back to Sign In"
+          variant="secondary"
+          onPress={() => navigation.navigate('Login')}
+          style={{ marginTop: Spacing.xl }}
+        />
       </View>
     );
   }
@@ -64,10 +76,14 @@ export function ForgotPasswordScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <ScrollView
-          contentContainerStyle={styles.container}
+          contentContainerStyle={styles.scrollContainer}
           keyboardShouldPersistTaps="handled"
         >
           <View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={styles.back}>← Back</Text>
+            </TouchableOpacity>
+
             <Text style={styles.title}>Reset password</Text>
             <Text style={styles.subtitle}>
               Enter your email and we'll send you a reset link
@@ -75,7 +91,7 @@ export function ForgotPasswordScreen() {
 
             <View style={styles.form}>
               <Input
-                label="Email"
+                label="EMAIL ADDRESS"
                 placeholder="you@example.com"
                 value={email}
                 onChangeText={setEmail}
@@ -101,15 +117,25 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   container: {
-    flexGrow: 1,
+    flex: 1,
+    backgroundColor: Colors.background,
     padding: Spacing.lg,
-    paddingTop: 40,
-    justifyContent: 'space-between',
-    paddingBottom: 40,
   },
   centered: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    padding: Spacing.lg,
+    paddingTop: Spacing.md,
+    justifyContent: 'space-between',
+    paddingBottom: 40,
+  },
+  back: {
+    ...Typography.caption,
+    color: Colors.textSecondary,
+    marginBottom: Spacing.lg,
   },
   title: {
     ...Typography.h1,
@@ -132,6 +158,7 @@ const styles = StyleSheet.create({
   successIcon: {
     fontSize: 48,
     marginBottom: Spacing.md,
+    color: Colors.primary,
   },
   successText: {
     ...Typography.body,

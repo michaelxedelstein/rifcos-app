@@ -7,4 +7,6 @@ export { LoadingScreen } from './LoadingScreen';
 export { ErrorScreen } from './ErrorScreen';
 export { Toast } from './Toast';
 export { Divider } from './Divider';
+export { ProgressBar } from './ProgressBar';
+export { TabBar } from './TabBar';
 export { ScreenShell } from './ScreenShell';
